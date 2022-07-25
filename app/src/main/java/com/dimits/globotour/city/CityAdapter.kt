@@ -15,20 +15,21 @@ class CityAdapter(val context : Context, var cityList : ArrayList<City>) : Recyc
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityViewHolder {
-        val itemView = LayoutInflater.from(context).inflate(R.layout.list_item_city,parent,false)
+        val itemView = LayoutInflater.from(context).inflate(R.layout.grid_item_city,parent,false)
         return CityViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: CityViewHolder, position: Int) {
         val city = cityList[position]
         holder.setData(city, position)
+        holder.setListeners()
     }
 
     override fun getItemCount(): Int {
         return cityList.size
     }
 
-    inner class CityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class CityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),View.OnClickListener {
 
         private var currentPosition : Int = -1
         private var currentCity : City? = null
@@ -56,6 +57,38 @@ class CityAdapter(val context : Context, var cityList : ArrayList<City>) : Recyc
 
             this.currentPosition = position
             this.currentCity = city
+        }
+
+        fun setListeners() {
+            imvDelete.setOnClickListener(this@CityViewHolder)
+            imvFavorite.setOnClickListener(this@CityViewHolder)
+        }
+
+        override fun onClick(p0: View?) {
+            when(p0!!.id){
+                R.id.imv_delete -> deleteItem()
+                R.id.imv_favorite -> addToFavorites()
+            }
+        }
+
+        fun deleteItem(){
+            cityList.removeAt(currentPosition)
+            notifyItemRemoved(currentPosition)
+            notifyItemRangeChanged(currentPosition,cityList.size)
+
+            VacationSpots.favoriteCityList.remove(currentCity!!)
+        }
+
+        fun addToFavorites() {
+            currentCity?.isFavorite = !(currentCity?.isFavorite!!) // Toggle the isFavorite Boolean
+
+            if (currentCity?.isFavorite!!){
+                imvFavorite.setImageDrawable(icFavoriteFilledImage)
+                VacationSpots.favoriteCityList.add(currentCity!!)
+            } else {
+                imvFavorite.setImageDrawable(icFavoriteBorderedImage)
+                VacationSpots.favoriteCityList.remove(currentCity!!)
+            }
         }
 
     }

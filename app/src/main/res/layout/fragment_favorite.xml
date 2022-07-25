@@ -5,17 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/city_recycler_view"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fav_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:gravity="center"
         android:padding="3dp"
-        android:text="Favorite Fragment"
-        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/list_item_favorite" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

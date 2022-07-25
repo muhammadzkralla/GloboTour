@@ -7,7 +7,9 @@
         <entry key="..\:/GloboTour/app/src/main/res/layout/activity_main.xml" value="0.10645812310797174" />
         <entry key="..\:/GloboTour/app/src/main/res/layout/fragment_city_list.xml" value="0.21105072463768115" />
         <entry key="..\:/GloboTour/app/src/main/res/layout/fragment_favorite.xml" value="0.21105072463768115" />
+        <entry key="..\:/GloboTour/app/src/main/res/layout/grid_item_city.xml" value="0.21105072463768115" />
         <entry key="..\:/GloboTour/app/src/main/res/layout/list_item_city.xml" value="0.21105072463768115" />
+        <entry key="..\:/GloboTour/app/src/main/res/layout/list_item_favorite.xml" value="0.21105072463768115" />
         <entry key="..\:/GloboTour/app/src/main/res/layout/nav_header.xml" value="0.21105072463768115" />
         <entry key="..\:/GloboTour/app/src/main/res/menu/activity_main_drawer_items.xml" value="0.21979166666666666" />
       </map>
